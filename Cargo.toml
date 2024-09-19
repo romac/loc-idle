@@ -1,0 +1,9 @@
+[package]
+name = "loc-idle"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+bigdecimal = "0.4.5"
+iced = { version = "0.13.1", features = ["debug", "tokio"] }
+tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
