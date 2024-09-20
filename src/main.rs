@@ -1,10 +1,11 @@
+use std::sync::Arc;
 use std::time::{Duration, Instant};
 
 use bigdecimal::BigDecimal;
+use iced::theme::Palette;
 use iced::widget::{button, column, container, horizontal_space, row, text, Column};
-use iced::Length::Fill;
-use iced::{time, Alignment};
-use iced::{Element, Subscription, Task, Theme};
+use iced::{color, theme, time, Color};
+use iced::{Element, Length, Subscription, Task, Theme};
 
 macro_rules! bd {
     ($value:expr) => {
@@ -17,13 +18,30 @@ fn spacer() -> Element<'static, Message> {
     text("").into()
 }
 
+fn theme() -> theme::Custom {
+    let pure = Color::new(4.0 / 255.0, 17.0 / 255.0, 4.0 / 255.0, 1.0);
+    let jade = Color::new(0.0 / 255.0, 17.0 / 255.0, 8.0 / 255.0, 1.0);
+    let sage = Color::new(12.0 / 255.0, 17.0 / 255.0, 12.0 / 255.0, 1.0);
+
+    theme::Custom::new(
+        "NightVision".to_string(),
+        Palette {
+            background: sage,
+            text: pure,
+            primary: jade,
+            success: color!(0xa6e3a1),
+            danger: color!(0xf38ba8),
+        },
+    )
+}
+
 pub fn main() -> iced::Result {
     tracing_subscriber::fmt::init();
 
     iced::application("LOC Idle", LocIdle::update, LocIdle::view)
         .subscription(LocIdle::subscription)
-        .theme(|_| Theme::TokyoNightStorm)
-        .antialiasing(true)
+        .theme(|_| Theme::Custom(Arc::new(theme())))
+        .antialiasing(false)
         .centered()
         .run()
 }
@@ -256,7 +274,11 @@ impl LocIdle {
 
         let right = column![
             // FPS
-            text!("{:.0} FPS", 1.0 / self.delta_time.as_secs_f64()).size(10),
+            row![
+                horizontal_space(),
+                text!("{:.0} FPS", 1.0 / self.delta_time.as_secs_f64()).size(10)
+            ]
+            .padding([10, 0]),
             //
             //
             // Upgrades
@@ -270,12 +292,11 @@ impl LocIdle {
         ];
 
         container(row![
-            left,
-            horizontal_space(),
-            right.align_x(Alignment::End)
+            left.width(Length::FillPortion(1)),
+            right.width(Length::FillPortion(1))
         ])
-        .width(Fill)
-        .height(Fill)
+        .width(Length::Fill)
+        .height(Length::Fill)
         .padding([0, 20])
         .into()
     }
