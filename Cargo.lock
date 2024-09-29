@@ -1741,7 +1741,7 @@ checksum = "2a385b1be4e5c3e362ad2ffa73c392e53f031eaa5b7d648e64cd87f27f6063d7"
 
 [[package]]
 name = "loc-idle"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "bigdecimal",
  "iced",
