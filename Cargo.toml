@@ -30,3 +30,4 @@ targets = [
 
 [workspace.metadata.release]
 tag-name = "v{{version}}"
+sign-tag = true
