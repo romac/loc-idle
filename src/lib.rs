@@ -201,7 +201,7 @@ impl LocIdle {
             .upgrades
             .iter()
             .enumerate()
-            .filter(|(_, u)| u.available)
+            .filter(|(_, u)| u.available && (u.enabled)(self))
             .map(|(i, u)| upgrade_button(self, i, u));
 
         let right = column![
