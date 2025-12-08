@@ -8,7 +8,7 @@ description = "An incremental game for producing code inspired by Universal Pape
 
 [dependencies]
 bigdecimal = "0.4.5"
-iced = { version = "0.13.1", features = ["debug", "tokio"] }
+iced = { version = "0.14.0", features = ["debug", "tokio"] }
 tracing-subscriber = { version = "0.3.18", features = ["env-filter"] }
 
 [profile.dist]
