@@ -9,18 +9,13 @@ pub struct GameState{
     pub locs: BigDecimal,
     pub available_funds:BigDecimal,
     pub coders: BigDecimal,
-    pub coder_level: BigDecimal, // => Maybe can be computed from other vals
-    // coder_cost => Can be recomputed from the number of coders owned atm
+    pub coder_level: BigDecimal,
     pub ai_hype:BigDecimal,
-    // ai_hype_cost => Can be recomputed from the number of ai_hype owned atm
-    // loc_price => Maybe can be recomputed from some vals
     pub loc_per_sec: BigDecimal,
-    pub loc_per_sec_base: BigDecimal, // => What's this?
+    pub loc_per_sec_base: BigDecimal,
     pub loc_multiplier: BigDecimal,
     pub loc_price_multiplier:BigDecimal,
     pub upgrades:Vec<usize>,
-    // last_time => What's this?
-    // delta_time => What's this?
     pub total_time:u64,
 }
 
