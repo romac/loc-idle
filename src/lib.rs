@@ -384,5 +384,4 @@ impl LocIdle {
             total_time: Duration::from_secs(gamestate.total_time)
         }
     }
-    
 }
