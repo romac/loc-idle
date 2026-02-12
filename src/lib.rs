@@ -151,7 +151,6 @@ impl LocIdle {
             println!("1: SaveAndQuit handler called");
             println!("2: Current state - LOCs: {}, Coders: {}", self.locs, self.coders);
             
-            // For now, just test without actual saving
             println!("3: Would save here...");
             let result=close_game(self);
             
